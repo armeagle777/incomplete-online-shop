@@ -1,17 +1,20 @@
-p{
-    margin: 0!important;
+p {
+    margin: 0 !important;
     padding: 0;
 }
-.card_title{
-    color: #0F1111!important;
-    font-size: 18px!important;
-    line-height: 24px!important;
-    font-family: "Amazon Ember",Arial,sans-serif;
+
+.card_title {
+    color: #0F1111 !important;
+    font-size: 18px !important;
+    line-height: 24px !important;
+    font-family: "Amazon Ember", Arial, sans-serif;
 }
-.card_text, .price_span{
-    color: #0F1111!important;
+
+.card_text, .price_span {
+    color: #0F1111 !important;
 }
-.card-group-my{
+
+.card-group-my {
     padding-top: 20px;
     width: 85%;
     display: flex;
@@ -19,15 +22,18 @@ p{
     gap: 10px 0;
 
 }
-.my_card{
+
+.my_card {
     display: flex;
     flex-direction: row;
     min-height: 200px;
 }
-.border_bottom{
+
+.border_bottom {
     border-bottom: 1px solid #ccc
 }
-.img_container{
+
+.img_container {
     width: 400px;
     height: 200px;
     display: flex;
@@ -35,26 +41,32 @@ p{
     justify-content: center;
     overflow: hidden;
 }
-.card_image{
+
+.card_image {
     height: inherit;
 }
-.selected-count{
+
+.selected-count {
     margin: 0 10px;
 }
-.card-footer{
+
+.card-footer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-.btn-quantity{
+
+.btn-quantity {
     outline: none;
     border: none;
     background: #fff;
 }
-.busket-container{
+
+.busket-container {
     position: relative;
 }
-.busket-quantity{
+
+.busket-quantity {
     position: absolute;
     top: -5px;
     left: -5px;
@@ -62,22 +74,24 @@ p{
     background: red;
     border: 3px solid rgb(33, 37, 41);
     border-radius: 50%;
-    padding: 0  5px;
+    padding: 0 5px;
     color: #fff;
 }
-.modal-container{
+
+.modal-container {
     position: fixed;
     z-index: 100;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, .5);
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
 }
-.modal-contentt{
+
+.modal-contentt {
     width: 300px;
     height: 100%;
     background: #fff;
@@ -85,89 +99,129 @@ p{
     flex-direction: column;
     justify-content: flex-start;
 }
-.modal-head{
+
+.modal-head {
     border-bottom: 1px solid #ccc;
     height: 50px;
     display: flex;
-    justify-content: space-between ;
+    justify-content: space-between;
     align-items: flex-start;
 }
-.modal-head span{
+
+.modal-head span {
     padding: 10px;
 }
-.modal-boddy{
+
+.modal-boddy {
     display: flex;
     flex-direction: column;
     gap: 10px 0;
 }
-.modal-close-button{
+
+.modal-close-button {
     outline: none;
     border: none;
     background: #fff;
     font-size: 20px;
 }
-.overflow-hidden{
+
+.overflow-hidden {
     overflow: hidden;
 }
-a{
-    text-decoration: none!important;
+
+a {
+    text-decoration: none !important;
 }
-.aside_left{
+
+.aside_left {
     width: 15%;
 }
-.app-container{
+
+.app-container {
     display: flex;
     flex-direction: row;
 }
-.card_info{
+
+.card_info {
     display: flex;
     flex-direction: column;
     width: 80%;
 }
-.redbasket{
+
+.redbasket {
     width: 24px;
 }
-.addToCard-button{
+
+.addToCard-button {
     width: 150px;
     font-size: 10px;
     outline: 0;
     background: #FFA41C;
-    border: 1px solid  #FF8F00;
+    border: 1px solid #FF8F00;
     border-radius: 15px;
     padding: 5px;
 }
-.addToCard-button:hover{
+
+.addToCard-button:hover {
     background: #FF8F00;
 }
-.product-price{
+
+.product-price {
     line-height: 20px;
     font-size: 20px;
     font-weight: 500;
 }
-.emptyCartMessage{
+
+.emptyCartMessage {
     padding-top: 20px;
     text-align: center;
 }
-.modal_footer{
+
+.modal_footer {
     border-top: 1px solid #ccc;
     margin-top: 20px;
     text-align: center;
 }
 
-.star_image{
+.star_image {
     width: 100px;
     height: 25px;
 }
-.stars_container{
+
+.stars_container {
     position: relative;
     width: 100px;
     height: 27px;
     margin-bottom: 5px;
 }
-.star_cover{
+
+.star_cover {
     position: absolute;
     top: 0;
     right: 0;
     height: 27px;
     background: #fff;
+}
+
+.add-cart-button {
+    display: inline-block;
+    background: #27c;
+    border: 1px solid #27c;
+    border-radius: 20px;
+    color: #fff;
+}
+
+.add-cart-button:hover {
+    background: #1c61a6;
+}
+
+.add-cart-button > button {
+    background: none;
+    border: 0;
+    outline: 0;
+}
+
+.add-cart-button img {
+    width: 16px;
+    height: 16px;
 }

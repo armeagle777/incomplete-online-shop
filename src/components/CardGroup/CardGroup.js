@@ -1,10 +1,20 @@
 import Card from "../Card/Card";
 import Preloader from "../Preloader/Preloader";
 
-const CardGroup = ({products,addCardProduct}) => {
+function CardGroup({products, addCardProduct, changeItemCount}) {
+
+
     return (
         <div className='card-group-my'>
-            {products.length === 0 ? <Preloader /> : products.map(product => <Card key={product.id} product={product} addCardProduct={addCardProduct}/>)}
+            {products.length === 0 ? <Preloader/> : products.map(product => (
+                    <Card
+                        key={product.id}
+                        product={product}
+                        handleModalCount={changeItemCount}
+                        addCardProduct={addCardProduct}
+                    />
+                )
+            )}
         </div>
     )
 }

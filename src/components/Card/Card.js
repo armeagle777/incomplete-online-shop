@@ -1,23 +1,22 @@
 import {useEffect, useState} from "react";
 import StarsImage from '../../assets/stars.png'
+import whiteCartIcon from '../../assets/whiteCartSvg.svg'
 
-export default function Card({product, addCardProduct}) {
-    const [selectedCount, setSelectedCount] = useState(null)
+
+function Card({product, addCardProduct, handleModalCount}) {
+
+    const [showBasket, setShowBasket] = useState(product.count === 0)
+
+
     useEffect(() => {
-        if (selectedCount !== null) {
-            const newItem = {...product, count: selectedCount}
-            addCardProduct(newItem)
+        if (product.count === 0) {
+            setShowBasket(true)
         }
-    }, [selectedCount])
-    const minusClickHandler = () => {
-        if (selectedCount > 0) {
-            setSelectedCount(prev => prev - 1)
-        }
-    }
-    const plusClickHandler = () => {
-        setSelectedCount(prev => prev + 1)
-    }
-    const percent = parseInt((5- product.rating).toFixed(2) * 100 /5) + '%'
+    }, [product])
+
+    const percent = parseInt((5 - product.rating).toFixed(2) * 100 / 5) + '%'
+
+
     return (
         <div className="my_card">
             <div className="img_container">
@@ -27,19 +26,39 @@ export default function Card({product, addCardProduct}) {
                 <div className="card-body">
                     <h5 className="card_title">{product.description}</h5>
                     <div className='stars_container'>
-                        <div><img className='star_image' src={StarsImage} alt=""/></div>
-                        <div className='star_cover' style={{width:percent}}> </div>
+                        <div><img className='star_image' src={StarsImage} alt="rating"/></div>
+                        <div className='star_cover' style={{width: percent}}></div>
                     </div>
-                    <span
-                        className='price_span'><sup>$</sup><span
-                        className="product-price">{product.price}</span><sup>00</sup></span>
+                    <span className='price_span'>
+                        <sup>$</sup>
+                        <span className="product-price">{product.price}</span>
+                        <sup>00</sup>
+                    </span>
+
                     <div>
-                        <button className="btn-quantity" onClick={minusClickHandler}>-</button>
-                        <span className="selected-count">{selectedCount || '0'}</span>
-                        <button className="btn-quantity" onClick={plusClickHandler}>+</button>
+                        <div className="add-cart-button">
+                            {
+                                showBasket &&
+                                <button onClick={() => setShowBasket(false)}>
+                                    <img src={whiteCartIcon} alt="shopping-cart"/>
+                                </button> ||
+                                <>
+                                    <button className="btn-quantity"
+                                            onClick={() => handleModalCount('-', product.id)}>-
+                                    </button>
+                                    <span className="selected-count">{product.count}</span>
+                                    <button className="btn-quantity"
+                                            onClick={() => handleModalCount('+', product.id)}>+
+                                    </button>
+                                </>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     )
 }
+
+
+export default Card

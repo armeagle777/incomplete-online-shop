@@ -15,6 +15,7 @@ a {
     text-decoration: none;
     color: white;
 }
+
 header {
     background: var(--main-header-bg);
     height: 5rem;
@@ -187,19 +188,23 @@ header {
     color: var(--main-text);
     box-shadow: 0rem 0rem 0.3rem var(--main-border-shadow);
 }
-.iconLink{
-    color: #fff!important;
+
+.iconLink {
+    color: #fff !important;
     font-weight: bold;
     position: relative;
 
 }
-.iconImage{
+
+.iconImage {
     width: 32px;
 }
-.amazonIcon{
+
+.amazonIcon {
     width: 70px;
 }
-.busketCount{
+
+.busketCount {
     position: absolute;
     top: 15px;
     left: 21px;

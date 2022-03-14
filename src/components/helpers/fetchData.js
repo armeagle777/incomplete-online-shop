@@ -4,5 +4,10 @@ async function fetchData() {
    return jsonData
 }
 
-
-export default fetchData
+const getDataFromLocal = () => {
+    const dataFromLocal = localStorage.getItem('amazonData')
+    if (dataFromLocal) {
+        return JSON.parse(dataFromLocal)
+    }
+}
+export {fetchData,getDataFromLocal}

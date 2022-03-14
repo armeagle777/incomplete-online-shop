@@ -1,7 +1,7 @@
 import classes from './Preloader.module.css'
 
 
-function Preloader(props) {
+function Preloader() {
     return (
         <div className={classes.preloader_container}>
             <div className={classes.my_card}>

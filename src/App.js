@@ -1,72 +1,76 @@
 import {useEffect, useState} from "react";
 import Header from "./components/Header/Header";
-import './App.css';
 import CardGroup from "./components/CardGroup/CardGroup";
-import fetchData from "./components/helpers/fetchData";
 import SideModal from "./components/SideModal/SideModal";
+import {fetchData, getDataFromLocal} from "./components/helpers/fetchData";
+import './App.css';
+
 
 function App() {
     const [products, setProducts] = useState([])
-    const [cartProducts, setCartProducts] = useState([])
     const [isModalOpen, setIsModalOPen] = useState(false)
 
     useEffect(() => {
-        fetchData().then(data => setProducts(data.products)).catch(err => console.log(err))
+        const localData = getDataFromLocal()
+        if (localData) {
+            setProducts(localData)
+        } else {
+            fetchData().then(data => setProducts(data.products.map(item => ({
+                ...item,
+                count: 0
+            })))).catch(err => console.log(err))
+        }
     }, [])
 
-    const handleModalCount = (sign, id) => {
-        setCartProducts(prev => prev.map(el => {
+
+    useEffect(() => {
+        localStorage.setItem('amazonData', JSON.stringify(products))
+    }, [products])
+
+
+    const changeItemCount = (sign, id) => {
+        setProducts(prev => prev.map(el => {
             if (el.id === id) {
-                return sign === '-' && el.count > 1 ? {...el, count: el.count - 1} : (sign === '+' ? {
+                return sign === '-' && el.count >= 1 ? {...el, count: el.count - 1} : (sign === '+' ? {
                     ...el,
                     count: el.count + 1
                 } : el)
             }
-
             return el
         }))
     }
 
 
-    const modalHandler = () => {
+    const toggleModal = () => {
         setIsModalOPen(!isModalOpen)
     }
 
 
     const modalRowDelete = (id) => {
-        setCartProducts(cartProducts.filter(el => el.id !== id))
+        setProducts(products.map(el => el.id === id ? {...el, count: 0} : el))
+    }
+
+    const getBasketItems = () => {
+        return products.filter(item => item.count > 0)
     }
 
 
-    const addCardProduct = (newProduct) => {
-        if (newProduct.count > 0) {
-            const newCardProducts = [...cartProducts]
-            const indexOfNewproduct = newCardProducts.findIndex(prod => prod.id === newProduct.id)
-            if (indexOfNewproduct >= 0) {
-                newCardProducts[indexOfNewproduct] = newProduct
-                setCartProducts(newCardProducts)
-            } else {
-                setCartProducts(prev => [...prev, newProduct])
-            }
-        } else {
-            modalRowDelete(newProduct.id)
-        }
-
-    }
-
-
-    return (<>
-        <Header cardProductsCounts={cartProducts.length} openModal={isModalOpen} modalHandler={modalHandler}/>
-        <div className="container app-container">
-            <aside className='aside_left'></aside>
-            <CardGroup products={products} addCardProduct={addCardProduct}/>
-            {
-                isModalOpen &&
-                <SideModal handleModalCount={handleModalCount} modalToggle={modalHandler}
-                           modalRowDelete={modalRowDelete} cardProducts={cartProducts}/>
-            }
-        </div>
-    </>);
+    return (
+        <>
+            <Header cardProductsCounts={getBasketItems().length} isModalOpen={isModalOpen} modalHandler={toggleModal}/>
+            <div className="container app-container">
+                <aside className='aside_left'></aside>
+                <CardGroup products={products} changeItemCount={changeItemCount}/>
+                <SideModal
+                    isModalOpen={isModalOpen}
+                    changeItemCount={changeItemCount}
+                    modalToggle={toggleModal}
+                    modalRowDelete={modalRowDelete}
+                    cardProducts={getBasketItems()}
+                />
+            </div>
+        </>
+    );
 }
 
 export default App;
