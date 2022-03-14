@@ -1,0 +1,40 @@
+.modal_row {
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+}
+
+.modal_row_img {
+    width: 30%;
+    height: 60px;
+}
+
+.modal_row_body {
+    width: 70%;
+}
+.row_img{
+    width: 80px;
+    height: 60px;
+}
+.row_title{
+    height: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.row_title:first-child{
+    font-size: 12px;
+}
+.trash_button{
+    outline: 0;
+    border: 0;
+    background: none;
+}
+.trash_button img{
+    width: 24px;
+}
+.row_buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}

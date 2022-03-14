@@ -1,0 +1,53 @@
+.preloader_container{
+    width: 100%;
+    height: 100vh;
+}
+.my_card{
+    box-sizing: border-box;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    min-height: 200px;
+}
+/* Animation BG start */
+@keyframes placeholder  {
+    0% {
+        background-position: -600px 0;
+    }
+    100% {
+        background-position: 600px 0;
+    }
+}
+
+.animated_background {
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeholder;
+    animation-timing-function: linear;
+    background: #eeeeee;
+    background: linear-gradient(to right, #eee 8%, #ddd 18%, #eee 33%);
+    background-size: 1200px 100px;
+}
+.picture_animation {
+    width: 340px;
+    height: 200px;
+}
+.myCard_body{
+    height: 200px;
+}
+.title_animation {
+    width: 600px;
+    height: 30px;
+    margin: 5px 10px;
+}
+.price_animation{
+    width: 50px;
+    height: 30px;
+    margin: 5px 10px;
+}
+.rating_animation{
+    height: 30px;
+    width: 100px;
+    margin: 0 10px;
+}
